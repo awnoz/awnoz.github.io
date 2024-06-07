@@ -1,10 +1,10 @@
 /* General Styling */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
-    background-color: #8BC6EC;
+    background-color: #f0f2f5;
     background-image: linear-gradient(135deg, #000428 0%, #004e92 100%);
     background-size: cover;
 }
@@ -36,7 +36,23 @@ nav ul li a {
 }
 
 nav ul li a:hover {
+    color: lightslategray;
     text-decoration: underline;
+}
+
+button {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white to match content sections */
+    color: #004e92; /* Match the darker part of the gradient */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #003366; /* Slightly darker blue for hover effect */
+    color: white; /* Change text color to white for better contrast on hover */
 }
 
 /* Hero Section Styling */
@@ -48,6 +64,24 @@ nav ul li a:hover {
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#hero {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 100px 20px;
+    text-align: center;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: url('Images/Background.jpeg'); /* Add a background image */
+    background-size: cover;
+    background-position: center;
+    color: white; /* Change text color for better contrast against background image */
+}
+
+#hero h1, #hero p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add text shadow for readability */
 }
 
 #hero h1 {
@@ -116,6 +150,24 @@ footer {
     padding: 1em;
     text-align: center;
     border-top: 1px solid #ddd;
+}
+
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #004e92;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+#backToTop:hover {
+    background-color: #003366;
 }
 
 /* Responsive Design */
