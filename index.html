@@ -9,10 +9,10 @@
 <body>
     <div class="bg"></div> <!-- Background container -->
     <header>
-        <nav>
+        <nav aria-label="Main Navigation">
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
+                <li><a href="#about" aria-label="About Me Section">About Me</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -24,9 +24,10 @@
     </section>
     <main>
         <section id="about">
-            <h2>About Me</h2>
-            <p>Hi, I'm <b>Awnoz Shakya</b>, A beginner Artist and a Polygot. This blog is about sharing my Journey as I grow as an Artist, a language learner. And ultimately, as a person.</p>
-        </section>
+    <h2>About Me</h2>
+    <p>Hi, I'm <b>Awnoz Shakya</b>, a beginner artist and a polyglot. I love exploring new languages and expressing myself through art. This blog is my way of sharing my journey, the challenges, and the triumphs as I grow both as an artist and a person.</p>
+    <p>I've been learning Japanese and working on my potrait sketching skills. Follow my blog to see my progress, tips, and the lessons I learn along the way!</p>
+</section>
         <section id="blog">
             <h2>Latest Blog Posts</h2>
             <article>
@@ -41,5 +42,20 @@
         <p>&copy; 2024 My Personal Blog | Designed by Awnoz With the help of ChatGpt</p>
     </footer>
     <script src="scripts.js"></script>
+    <button id="backToTop">Back to Top</button>
+<script>
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 100) {
+            backToTop.style.display = 'block';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
 </body>
 </html>
