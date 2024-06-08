@@ -1,75 +1,96 @@
 /* General Styling */
+:root {
+    --background-color: #f0f2f5;
+    --text-color: #333;
+    --nav-background-color: #000;
+    --nav-text-color: #fff;
+    --button-background-color: #000;
+    --button-text-color: #fff;
+    --button-hover-color: #ff6347;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    color: #333;
-    background-color: #f0f2f5;
-    background-image: linear-gradient(135deg, #000428 0%, #004e92 100%);
+    color: var(--text-color);
+    background-color: var(--background-color);
     background-size: cover;
 }
 
 /* Header Styling */
 header {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    color: #333;
+    background-color: var(--nav-background-color);
+    color: var(--nav-text-color);
     padding: 1em 0;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #444;
+    position: sticky; /* Make header stick to the top */
+    top: 0; /* Position at the top */
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.horizontal-nav{
+    display: flex;
+}
+
+.horizontal-nav li {
+    margin-right:20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex;
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 20px;
+    margin: 0 20px;
 }
 
 nav ul li a {
-    color: #333;
+    color: var(--nav-text-color);
     text-decoration: none;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 nav ul li a:hover {
-    color: lightslategray;
-    text-decoration: underline;
+    color: var(--button-hover-color);
 }
 
-button {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white to match content sections */
-    color: #004e92; /* Match the darker part of the gradient */
+#toggleDarkMode {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+    font-size: 1em;
 }
 
-button:hover {
-    background-color: #003366; /* Slightly darker blue for hover effect */
-    color: white; /* Change text color to white for better contrast on hover */
+#toggleDarkMode i {
+    font-size: 1.2em;
 }
 
-/* Hero Section Styling */
-#hero {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    color: #333;
-    padding: 100px 20px;
-    text-align: center;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+#toggleDarkMode:hover {
+    background-color: var(--button-hover-color);
 }
 
-#hero {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #333;
-    padding: 100px 20px;
+/* Hero Section */
+.hero {
+    padding: 150px 20px;
     text-align: center;
     margin: 20px;
     border-radius: 10px;
@@ -77,107 +98,144 @@ button:hover {
     background-image: url('Images/Background.jpeg'); /* Add a background image */
     background-size: cover;
     background-position: center;
-    color: white; /* Change text color for better contrast against background image */
+    color: mintcream; /* Change text color for better contrast against background image */
 }
 
-#hero h1, #hero p {
+.hero h1, .hero p{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add text shadow for readability */
 }
 
-#hero h1 {
-    font-size: 2.5em;
-    margin: 0;
+main{
+    flex:1;
 }
 
-#hero p {
+/* About Section Styling */
+#about {
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #fff 50%, var(--background-color) 50%);
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#about h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#about p {
     font-size: 1.2em;
-    margin: 20px 0 0;
+    margin-bottom: 20px;
 }
 
-/* Main Content Styling */
-main {
-    padding: 20px;
+#about button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+#about button:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Features Section Styling */
+#features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.feature {
     text-align: center;
 }
 
-section {
-    margin-bottom: 40px;
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+.feature img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
-h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
+.feature p {
+    font-size: 1em;
+    margin: 0;
+    text-transform: uppercase;
 }
 
-article {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: left;
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-article h3 {
-    margin-top: 0;
-}
-
-article p {
-    margin: 10px 0;
-}
-
-article a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-article a:hover {
-    text-decoration: underline;
-}
 
 /* Footer Styling */
 footer {
-    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-    color: #333;
+    position: bottom;
+    bottom: 0;
+    background-color: var(--nav-background-color);
+    color: var(--nav-text-color);
     padding: 1em;
     text-align: center;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #444;
 }
 
+/* Back to Top Button */
 #backToTop {
     display: none;
     position: fixed;
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: #004e92;
-    color: white;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1000; /* Ensure it's on top of other elements */
+    z-index: 1000;
 }
 
 #backToTop:hover {
-    background-color: #003366;
+    background-color: var(--button-hover-color);
+}
+
+/* Dark Mode Styling */
+body.dark-mode {
+    --background-color: #3c3c3c;
+    --text-color: #f0f0f0;
+    --nav-background-color: #000;
+    --nav-text-color: #f0f0f0;
+    --button-background-color: #444;
+    --button-text-color: #f0f0f0;
+    --button-hover-color: #ff6347;
+}
+
+#about.dark-mode{
+    background: linear-gradient(135deg, #676767 50%, var(--background-color) 50%);
+}
+
+#features.dark-mode, .feature.dark-mode {
+    background-color: #676767; /* Set a dark background color for features section */
+    color: var(--text-color); /* Ensure text color is appropriate */
+}
+
+header.dark-mode, footer.dark-mode {
+    background-color: var(--nav-background-color);
+    color: var(--nav-text-color);
+}
+
+#toggleDarkMode.dark-mode {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+
     nav ul li {
-        display: block;
         margin: 10px 0;
     }
 
-    #hero {
-        padding: 50px 20px;
-    }
 }

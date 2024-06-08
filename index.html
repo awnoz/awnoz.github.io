@@ -5,57 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awnoz Shakya - Home</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="bg"></div> <!-- Background container -->
     <header>
         <nav aria-label="Main Navigation">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about" aria-label="About Me Section">About Me</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul class="horizontal-nav">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="About.html">ABOUT</a></li>
+                <li><a href="#blog">BLOG</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
+            <button id="toggleDarkMode">
+                <i class="fas fa-moon"></i>
+            </button>
         </nav>
     </header>
-    <section id="hero">
-        <h1>Welcome to My Personal Blog</h1>
-        <p>Sharing my journey and experiences</p>
-    </section>
+    <!-- Hero section -->
+    <div class="hero">
+        <h1>Welcome to Our Website</h1>
+        <p>We create amazing digital experiences for you.</p>
+    </div>
     <main>
         <section id="about">
-    <h2>About Me</h2>
-    <p>Hi, I'm <b>Awnoz Shakya</b>, a beginner artist and a polyglot. I love exploring new languages and expressing myself through art. This blog is my way of sharing my journey, the challenges, and the triumphs as I grow both as an artist and a person.</p>
-    <p>I've been learning Japanese and working on my potrait sketching skills. Follow my blog to see my progress, tips, and the lessons I learn along the way!</p>
-</section>
-        <section id="blog">
-            <h2>Latest Blog Posts</h2>
-            <article>
-                <h3>My First Blog Post</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac velit ac lorem sodales faucibus.</p>
-                <a href="#">Read more</a>
-            </article>
-            <!-- Add more blog posts as needed -->
+            <h1>ABOUT ME</h1>
+            <p>Welcome to my personal blog. Here, I share my journey and experiences as I navigate through various aspects of life. Stay tuned for updates and insights!</p>
+            <a href="About.html"><button>LEARN MORE</button></a>
+        </section>
+        <section id="features">
+            <div class="feature">
+                <img src="path-to-your-image1.png" alt="Feature 1">
+                <p>ART & CRAFT</p>
+            </div>
+            <div class="feature">
+                <img src="path-to-your-image2.png" alt="Feature 2">
+                <p>DESIGN</p>
+            </div>
+            <div class="feature">
+                <img src="path-to-your-image3.png" alt="Feature 3">
+                <p>PHOTOGRAPHY</p>
+            </div>
+            <div class="feature">
+                <img src="path-to-your-image4.png" alt="Feature 4">
+                <p>TECHNOLOGY</p>
+            </div>
         </section>
     </main>
     <footer>
-        <p>&copy; 2024 My Personal Blog | Designed by Awnoz With the help of ChatGpt</p>
+        <p>&copy; All Rights Reserved | Designed by Awnoz with the help of ChatGPT</p>
     </footer>
     <script src="scripts.js"></script>
     <button id="backToTop">Back to Top</button>
-<script>
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 100) {
-            backToTop.style.display = 'block';
-        } else {
-            backToTop.style.display = 'none';
-        }
-    });
-
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-</script>
 </body>
 </html>
