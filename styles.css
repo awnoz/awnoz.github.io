@@ -239,3 +239,7 @@ header.dark-mode, footer.dark-mode {
     }
 
 }
+
+::webkit-scrollbar{
+    display: none;
+}
