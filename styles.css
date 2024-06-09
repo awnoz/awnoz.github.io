@@ -240,6 +240,6 @@ header.dark-mode, footer.dark-mode {
 
 }
 
-::--webkit-scrollbar{
+::-webkit-scrollbar{
     display: none;
 }
