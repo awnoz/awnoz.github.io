@@ -71,23 +71,35 @@ nav ul li a:hover {
 }
 
 #toggleDarkMode {
-    background-color: var(--button-background-color);
-    color: var(--button-text-color);
+    background-color: #000;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 10px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 1em;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#toggleDarkMode i {
-    font-size: 1.2em;
+#toggleDarkMode img{
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
 }
 
-#toggleDarkMode:hover {
-    background-color: var(--button-hover-color);
+
+/* Dark Mode Styling */
+body.dark-mode #toggleDarkMode {
+    background-color: #fff; 
 }
 
+body.dark-mode #toggleDarkMode img{
+    width: 50px;
+    height: 50px;
+    filter: invert(0);
+}
 /* Hero Section */
 .hero {
     padding: 150px 20px;
@@ -184,21 +196,35 @@ footer {
 
 /* Back to Top Button */
 #backToTop {
-    display: none;
+    display: flex;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: var(--button-background-color);
     color: var(--button-text-color);
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
     z-index: 1000;
+}
+
+#backToTop img{
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
 }
 
 #backToTop:hover {
     background-color: var(--button-hover-color);
+}
+
+body.dark-mode #backToTop {
+    background-color: transparent;
 }
 
 /* Dark Mode Styling */
@@ -240,6 +266,7 @@ header.dark-mode, footer.dark-mode {
 
 }
 
+/* custom scrollbar */
 ::-webkit-scrollbar{
     display: none;
 }

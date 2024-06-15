@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (features) features.classList.add('dark-mode');
         if (about) about.classList.add('dark-mode');
         featureItems.forEach(item => item.classList.add('dark-mode'));
-        toggleDarkModeButton.innerHTML = '<i class="fas fa-sun"></i>';
+         toggleIcon.src = 'Images/moon.png';
     }
 
     // Scroll to top functionality
@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         featureItems.forEach(item => item.classList.toggle('dark-mode'));
         if (body.classList.contains('dark-mode')) {
             localStorage.setItem('dark-mode', 'true');
-            toggleDarkModeButton.innerHTML = '<i class="fas fa-sun"></i>';
+            toggleIcon.src = 'Images/moon.png';
         } else {
             localStorage.setItem('dark-mode', 'false');
-            toggleDarkModeButton.innerHTML = '<i class="fas fa-moon"></i>';
+            toggleIcon.src = 'Images/sun.png';
         }
     });
 });
