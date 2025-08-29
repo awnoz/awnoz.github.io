@@ -1,51 +1,55 @@
+// scripts.js
 document.addEventListener('DOMContentLoaded', () => {
-    const backToTop = document.getElementById('backToTop');
-    const toggleDarkModeButton = document.getElementById('toggleDarkMode');
-    const body = document.body;
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
-    const features = document.getElementById('features');
-    const featureItems = document.querySelectorAll('.feature');
-    const about = document.getElementById('about');
+  const body = document.body;
+  const header = document.querySelector('header');
+  const footer = document.querySelector('footer');
+  const about = document.getElementById('about');
+  const features = document.getElementById('features');
+  const featureItems = document.querySelectorAll('.feature');
+  const backToTop = document.getElementById('backToTop');
+  const toggleBtn = document.getElementById('toggleDarkMode');
+  const toggleIcon = document.getElementById('toggleIcon');
 
-    // Check if dark mode is saved in local storage
-    if (localStorage.getItem('dark-mode') === 'true') {
-        body.classList.add('dark-mode');
-        header.classList.add('dark-mode');
-        footer.classList.add('dark-mode');
-        if (features) features.classList.add('dark-mode');
-        if (about) about.classList.add('dark-mode');
-        featureItems.forEach(item => item.classList.add('dark-mode'));
-         toggleIcon.src = 'Images/moon.png';
-    }
+  // ---- DARK MODE ----
+  const applyTheme = (mode) => {
+    const dark = mode === 'dark';
+    body.classList.toggle('dark-mode', dark);
+    header.classList.toggle('dark-mode', dark);
+    footer.classList.toggle('dark-mode', dark);
+    if (about) about.classList.toggle('dark-mode', dark);
+    if (features) features.classList.toggle('dark-mode', dark);
+    featureItems.forEach(item => item.classList.toggle('dark-mode', dark));
 
-    // Scroll to top functionality
+    document.documentElement.setAttribute('data-theme', mode);
+    localStorage.setItem('theme', mode);
+
+    toggleBtn.setAttribute('aria-pressed', dark);
+    toggleIcon.src = dark ? 'Images/moon.png' : 'Images/sun.png';
+    toggleIcon.alt = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  };
+
+  // Check saved theme or system preference
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(stored || (prefersDark ? 'dark' : 'light'));
+
+  // Toggle button
+  toggleBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // ---- BACK TO TOP ----
+  if (backToTop) {
+    backToTop.setAttribute('aria-label', 'Back to top');
+
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 100) {
-            backToTop.style.display = 'block';
-        } else {
-            backToTop.style.display = 'none';
-        }
+      backToTop.style.opacity = window.scrollY > 300 ? '1' : '0';
+      backToTop.style.pointerEvents = window.scrollY > 300 ? 'auto' : 'none';
     });
 
     backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // Toggle dark mode functionality
-    toggleDarkModeButton.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        header.classList.toggle('dark-mode');
-        footer.classList.toggle('dark-mode');
-        if (features) features.classList.toggle('dark-mode');
-        if (about) about.classList.toggle('dark-mode');
-        featureItems.forEach(item => item.classList.toggle('dark-mode'));
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('dark-mode', 'true');
-            toggleIcon.src = 'Images/moon.png';
-        } else {
-            localStorage.setItem('dark-mode', 'false');
-            toggleIcon.src = 'Images/sun.png';
-        }
-    });
+  }
 });
