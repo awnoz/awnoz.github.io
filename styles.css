@@ -1,4 +1,11 @@
-/* General Styling */
+/* ===============================
+   Awnoz — Cleaned / Preserving CSS
+   - Preserves original dark-mode behavior & toggle sizing
+   - Keeps hero background, circular feature images, back-to-top
+   - Removes duplicate/conflicting blocks
+================================*/
+
+/* -------- Variables & Base -------- */
 :root {
     --background-color: #f0f2f5;
     --text-color: #333;
@@ -7,6 +14,10 @@
     --button-background-color: #000;
     --button-text-color: #fff;
     --button-hover-color: #ff6347;
+
+    /* used by feature cards & small text */
+    --card: #ffffff;
+    --muted: #555;
 }
 
 body {
@@ -21,7 +32,7 @@ body {
     background-size: cover;
 }
 
-/* Header Styling */
+/* -------- Header / Nav -------- */
 header {
     background-color: var(--nav-background-color);
     color: var(--nav-text-color);
@@ -29,16 +40,16 @@ header {
     text-align: center;
     border-bottom: 1px solid #444;
     position: sticky; /* Make header stick to the top */
-    top: 0; /* Position at the top */
-    z-index: 1000; /* Ensure it's above other content */
+    top: 0;
+    z-index: 1000;
 }
 
-.horizontal-nav{
+/* keep horizontal-nav helpers you used */
+.horizontal-nav {
     display: flex;
 }
-
 .horizontal-nav li {
-    margin-right:20px;
+    margin-right: 20px;
 }
 
 nav {
@@ -70,8 +81,9 @@ nav ul li a:hover {
     color: var(--button-hover-color);
 }
 
+/* Dark mode toggle button — preserves your original sizing & appearance */
 #toggleDarkMode {
-    background-color: #000;
+    background-color: var(--button-background-color);
     border: none;
     padding: 10px;
     border-radius: 50%;
@@ -83,45 +95,35 @@ nav ul li a:hover {
     align-items: center;
 }
 
-#toggleDarkMode img{
+#toggleDarkMode img {
     width: 40px;
     height: 40px;
-    filter: invert(1);
+    filter: invert(1); /* original: inverted for dark icon on light bg */
 }
 
-
-/* Dark Mode Styling */
-body.dark-mode #toggleDarkMode {
-    background-color: #fff; 
-}
-
-body.dark-mode #toggleDarkMode img{
-    width: 50px;
-    height: 50px;
-    filter: invert(0);
-}
-/* Hero Section */
+/* -------- Hero -------- */
 .hero {
     padding: 150px 20px;
     text-align: center;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-image: url('Images/Background.jpeg'); /* Add a background image */
+    background-image: url('Images/Background.jpeg'); /* preserved */
     background-size: cover;
     background-position: center;
-    color: mintcream; /* Change text color for better contrast against background image */
+    color: mintcream; /* preserved for contrast */
 }
 
-.hero h1, .hero p{
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add text shadow for readability */
+.hero h1,
+.hero p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-main{
-    flex:1;
+main {
+    flex: 1;
 }
 
-/* About Section Styling */
+/* -------- About -------- */
 #about {
     text-align: center;
     padding: 50px 20px;
@@ -154,20 +156,36 @@ main{
     background-color: var(--button-hover-color);
 }
 
-/* Features Section Styling */
+/* -------- Features (single clean definition) --------
+   - Uses grid layout (responsive)
+   - Preserves circular 100x100 images on larger screens
+   - Falls back to smaller icons on narrow screens
+------------------------------------------- */
 #features {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
     padding: 50px 20px;
     margin: 20px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: var(--card); /* prefer variable over hard-coded value */
 }
 
 .feature {
     text-align: center;
+    padding: 1rem;
+    border-radius: 16px;
+    background: var(--card);
+    transition: transform .15s ease, box-shadow .2s ease;
 }
 
+/* hover lift for interaction */
+.feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+/* keep circular images like your original code (100x100 on desktop) */
 .feature img {
     width: 100px;
     height: 100px;
@@ -176,17 +194,27 @@ main{
     margin-bottom: 10px;
 }
 
+/* responsive smaller icon size (matches your later 56px idea on small screens) */
+@media (max-width: 520px) {
+    .feature img {
+        width: 56px;
+        height: 56px;
+    }
+}
+
 .feature p {
     font-size: 1em;
     margin: 0;
     text-transform: uppercase;
+    margin-top: .5rem;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: .02em;
 }
 
-
-/* Footer Styling */
+/* -------- Footer -------- */
+/* removed invalid `position: bottom;` and keep the footer simple and functional */
 footer {
-    position: bottom;
-    bottom: 0;
     background-color: var(--nav-background-color);
     color: var(--nav-text-color);
     padding: 1em;
@@ -194,9 +222,8 @@ footer {
     border-top: 1px solid #444;
 }
 
-/* Back to Top Button */
+/* -------- Back to Top Button -------- */
 #backToTop {
-    display: flex;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -208,12 +235,13 @@ footer {
     cursor: pointer;
     width: 40px;
     height: 40px;
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-#backToTop img{
+#backToTop img {
     width: 20px;
     height: 20px;
     filter: invert(1);
@@ -223,11 +251,15 @@ footer {
     background-color: var(--button-hover-color);
 }
 
+/* keep your original dark-mode specific tweak: make back-to-top transparent */
 body.dark-mode #backToTop {
     background-color: transparent;
 }
 
-/* Dark Mode Styling */
+/* -------- Dark Mode (global variables + per-element fallbacks) --------
+   - Global variables change for dark mode (so most things adapt)
+   - Specific selectors preserve your original toggle / element overrides
+------------------------------------------- */
 body.dark-mode {
     --background-color: #3c3c3c;
     --text-color: #f0f0f0;
@@ -236,18 +268,44 @@ body.dark-mode {
     --button-background-color: #444;
     --button-text-color: #f0f0f0;
     --button-hover-color: #ff6347;
+
+    /* dark-mode variants for cards and muted text */
+    --card: #676767;
+    --muted: #ccc;
 }
 
-#about.dark-mode{
+/* preserve the exact toggle behavior you wrote earlier:
+   - set toggle background explicitly to white in dark mode (keeps your visual choice)
+   - enlarge the icon to 50px and remove invert
+*/
+body.dark-mode #toggleDarkMode {
+    background-color: #fff; /* explicit override preserved from your code */
+}
+
+body.dark-mode #toggleDarkMode img {
+    width: 50px;
+    height: 50px;
+    filter: invert(0);
+}
+
+/* fallback selectors — in case you apply .dark-mode directly to elements */
+#about.dark-mode,
+body.dark-mode #about {
     background: linear-gradient(135deg, #676767 50%, var(--background-color) 50%);
 }
 
-#features.dark-mode, .feature.dark-mode {
-    background-color: #676767; /* Set a dark background color for features section */
-    color: var(--text-color); /* Ensure text color is appropriate */
+#features.dark-mode,
+.feature.dark-mode,
+body.dark-mode #features,
+body.dark-mode .feature {
+    background-color: var(--card);
+    color: var(--text-color);
 }
 
-header.dark-mode, footer.dark-mode {
+header.dark-mode,
+footer.dark-mode,
+body.dark-mode header,
+body.dark-mode footer {
     background-color: var(--nav-background-color);
     color: var(--nav-text-color);
 }
@@ -257,16 +315,33 @@ header.dark-mode, footer.dark-mode {
     color: var(--button-text-color);
 }
 
-/* Responsive Design */
+/* -------- Responsive -------- */
 @media (max-width: 768px) {
-
     nav ul li {
         margin: 10px 0;
     }
-
 }
 
-/* custom scrollbar */
-::-webkit-scrollbar{
+/* -------- Misc -------- */
+/* hide scrollbar like you had before */
+::-webkit-scrollbar {
     display: none;
+}
+/* === Learn More Button Style === */
+.learn-more-btn {
+    background: var(--card-bg, #fff); /* same background logic as cards */
+    border: none;
+    border-radius: 12px;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect like feature cards */
+.learn-more-btn:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
